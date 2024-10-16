@@ -1,5 +1,5 @@
 function [xi,yi] = deg2int(x,y)
-  zoom=14;
+  zoom=17;
   lat_rad = y*pi/180;
   n = 2.0^zoom;
   xi = floor((x + 180.0) / 360.0 * n);

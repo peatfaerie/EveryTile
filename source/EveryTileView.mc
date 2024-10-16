@@ -36,22 +36,29 @@ class EveryTileView extends Ui.DataField {
     hidden var mx;
     hidden var my;
     hidden var singleDF = true;
-
+ 
 
     function deg2px(dgr)
     {
        var px = [0, 0];
-       px[0] = Math.floor((((dgr[1] + 180.0) * 45.5111111111111)-mp.loni) * tileW).toNumber();
-       px[1] = Math.floor(((1.0 - Math.ln(Math.tan(dgr[0]*0.0174532925199433) + (1.0 / Math.cos(dgr[0]*0.0174532925199433))) * 0.318309886183791) *8192-mp.lati)*tileH).toNumber();
+       //px[0] = Math.floor((((dgr[1] + 180.0) * 45.5111111111111)-mp.loni) * tileW).toNumber();
+       px[0] = Math.floor((((dgr[1] + 180.0) * 364.08888888889)-mp.loni) * tileW).toNumber();
+       //px[1] = Math.floor(((1.0 - Math.ln(Math.tan(dgr[0]*0.0174532925199433) + (1.0 / Math.cos(dgr[0]*0.0174532925199433))) * 0.318309886183791) *8192-mp.lati)*tileH).toNumber();
+       px[1] = Math.floor(((1.0 - Math.ln(Math.tan(dgr[0]*0.0174532925199433) + (1.0 / Math.cos(dgr[0]*0.0174532925199433))) * 0.318309886183791) *65536-mp.lati)*tileH).toNumber();
        return px;
     }
 
     function pxdist(dgr1,dgr2)
     {
-       if (  (   ((dgr1[1]-dgr2[1]) * 45.5111111111111 * tileW ).abs().toNumber()>1 ) ||
+       //if (  (   ((dgr1[1]-dgr2[1]) * 45.5111111111111 * tileW ).abs().toNumber()>1 ) ||
+       //      (   ( (- Math.ln(Math.tan(dgr1[0]*0.0174532925199433) + (1.0 / Math.cos(dgr1[0]*0.0174532925199433)))
+       //             + Math.ln(Math.tan(dgr2[0]*0.0174532925199433) + (1.0 / Math.cos(dgr2[0]*0.0174532925199433))) ) * 0.318309886183791 *8192*tileH
+       //          ).abs().toNumber()>1))
+ 
+       if (  (   ((dgr1[1]-dgr2[1]) * 364.08888888889 * tileW ).abs().toNumber()>1 ) ||
              (   ( (- Math.ln(Math.tan(dgr1[0]*0.0174532925199433) + (1.0 / Math.cos(dgr1[0]*0.0174532925199433)))
-                    + Math.ln(Math.tan(dgr2[0]*0.0174532925199433) + (1.0 / Math.cos(dgr2[0]*0.0174532925199433))) ) * 0.318309886183791 *8192*tileH
-                 ).abs().toNumber()>1))
+                    + Math.ln(Math.tan(dgr2[0]*0.0174532925199433) + (1.0 / Math.cos(dgr2[0]*0.0174532925199433))) ) * 0.318309886183791 *65536*tileH
+                 ).abs().toNumber()>1))          
        {
           return true;
        }else
@@ -260,7 +267,7 @@ class EveryTileView extends Ui.DataField {
           {
              var ddgr = info.currentLocation.toDegrees();
              var dgr = [ddgr[0].toFloat(), ddgr[1].toFloat()];
-             var i= 0;
+             
              if(!initialized)
              {
                 pt.set(0,dgr);

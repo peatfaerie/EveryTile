@@ -35,14 +35,16 @@ class map{
 
    function lat2lati(lat)
    {
-      return (8192.0 - Math.ln(Math.tan(lat*0.0174532925199433) + (1.0 / Math.cos(lat*0.0174532925199433))) * 2607.59458761762).toNumber();
+      //return (8192.0 - Math.ln(Math.tan(lat*0.0174532925199433) + (1.0 / Math.cos(lat*0.0174532925199433))) * 2607.59458761762).toNumber();
+      return (65536.0 - Math.ln(Math.tan(lat*0.0174532925199433) + (1.0 / Math.cos(lat*0.0174532925199433))) * 20860.75670094091).toNumber();
    }
 
 
 
    function lon2loni(lon)
    {
-      return ((lon + 180.0) * 45.5111111111111).toNumber();
+      //return ((lon + 180.0) * 45.5111111111111).toNumber();
+      return ((lon + 180.0) * 364.08888888889).toNumber();
    }
 
    function bigmap2lmap(xi,yi)
@@ -212,7 +214,6 @@ class map{
 
           Storage.setValue("hlat",hlat);
           Storage.setValue("hlon",hlon);
-          Properties.setValue("bmapstr",""); // not used anymore, might as well delete it
           Storage.setValue("bigMap",bigMap);
        }
 
