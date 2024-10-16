@@ -1,8 +1,8 @@
 clear x;
 d= load('tiles.txt');
 
-hx = 8517;
-hy = 5465;
+hx = 8789;
+hy = 5380;
 A = zeros(124);
 
 %%figure(); hold on;
