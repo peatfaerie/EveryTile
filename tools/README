@@ -9,7 +9,7 @@ You will need: shell (with awk) and python, both available for every linux distr
 
    this collects the relevant coordinates data from the kml file in a simple ascii file tiles.txt
 
-3) run tiles.py script with tiles.txt as an input along with longitude ant latitude (in that order!) of the home point
+3) run tiles.py script with tiles.txt as an input along with longitude and latitude (in that order!) of the home point
    > tiles.py tiles.txt 13.122137 52.428952
 
 additionaly you can add zoom (default is 14) to genrate string for different zoom level (but then you have to provide proper tiles.txt file)
