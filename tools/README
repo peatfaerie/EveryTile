@@ -1,15 +1,18 @@
 Importing missing tiles from VeloViewer into EveryTile
 ------------------------------------------------------
 
-You will need: sed and octave/matlab, both available for every linux distro
+You will need: shell (with awk) and python, both available for every linux distro
 
 1) Get the KML file with yur missing tiles from your summary page on veloviewer.com, 
 
 2) run mktiles.sh <kml_file> > tiles.txt
 
-   this collects the relevant data from the kml file in a simple ascii file tiles.txt
+   this collects the relevant coordinates data from the kml file in a simple ascii file tiles.txt
 
-3) Start octave (or matlab) and run 
-   > tiles
+3) run tiles.py script with tiles.txt as an input along with longitude ant latitude (in that order!) of the home point
+   > tiles.py tiles.txt 13.122137 52.428952
 
-   use resulting bmapstr in settings  
+additionaly you can add zoom (default is 14) to genrate string for different zoom level (but then you have to provide proper tiles.txt file)
+   > tiles.py tiles17.txt 13.122137 52.428952 17
+
+  4) use resulting bmapstr in settings  
