@@ -34,9 +34,11 @@ def main():
         x[l] = xi - hx
         y[l] = yi - hy
 
-    A[np.min(x) + 61 : np.max(x) + 61, np.min(y) + 61 : np.max(y) + 61] = 1
+    A[np.min(x) + 61 : np.max(x) + 62, np.min(y) + 61 : np.max(y) + 62] = 1
     for l in range(len(x)):
         A[x[l] + 61, y[l] + 61] = 0
+
+    #np.savetxt('py.arr', A, fmt='%d', delimiter='')
 
     # Create compressed array
     v = np.zeros(124 * 4, dtype=np.int32)
